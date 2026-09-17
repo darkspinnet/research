@@ -1,0 +1,9 @@
+# Build 0.7.30 strength and homing reports
+
+Reviewed `enemies-are-too-strong` (2026-09-06T18:02:58Z) and `enemy-projectlies-seem-to-follow-me-maybe-intended-behaviour` (18:04:07Z). Both archives contain five entries; non-trace diagnostics are extracted beneath `bin/game/logs/strength-homing-0730` using native 7-Zip.
+
+Both contexts show campaign 2-1, difficulty index 5, and Krel Delta at 43.5/165 health. Krel and Andromeda each have exactly one functional item, a level-96 weapon; Andromeda has 6.5/105 health. Crogenitor level 50 and the weapon level must not be treated as evidence of defensive equipment. The report does not contain equipped defense attributes or an incoming per-hit damage breakdown sufficient to establish a scaling error.
+
+The strength capture's runtime log identifies `VerdanthBasicRanged.Noun` objects 78–84 and 81 firing `HomingSwarm`, including shots resolving after the victim moved. The content-description audit in `notes/campaign/2-1/descriptions.md` identifies this as Swarming Herbipod, whose authored description explicitly specifies slow, relentlessly homing attacks. Following the victim is therefore expected; the exact numeric projectile tuning remains the existing documented fallback, not recovered retail tuning.
+
+No global damage reduction or homing removal was made from these reports. The existing working-tree equipment-defense implementation is relevant to survivability but cannot be claimed to fix this capture, particularly for heroes with no defensive equipment. The legacy homing impact path still uses endpoint/range resolution rather than sampled contacts; this review does not establish exact trajectory correctness or close that separate limitation. Production gameplay verification remains outstanding. No builds, compilation, or tests were run.

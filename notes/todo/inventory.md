@@ -1,0 +1,4 @@
+# Inventory
+
+- Current: Persistence, equipment, rewards, editor budget, all 381 packaged vendor purchases, authored sell/buyback/flair conversion, and transactional campaign pickups work. Multiplayer equipment executes the recovered stable-slot `1..100` participant rolls with random tie-breaking, freezes the winner on the pickup, publishes exact sparse `0x502A2D7E` roll events to every connected peer, persists and targets `LootAwarded` only to the winner, and removes the shared world object for everyone.
+- Evidence boundary: Retail disconnect-time simulator membership, natural equipment/crystal lifetime, and authoritative sender batching still require a multiplayer capture; the playable conservative policies remain visible in `notes/help.md` rather than blocking the completed inventory workstream.

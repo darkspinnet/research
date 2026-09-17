@@ -1,0 +1,5 @@
+# Polaris released projectile ownership
+
+September 6 report `there-seems-to-be-a-big-of-desync-with-polaris-s-projectiles-darkspin-bug-0.7.30-20260906T163941.055395200Z` is from `test_AI_zoo`, not the ordinary 2-4 level. It records Polaris (`ZelemMarkSeeker`, source 13) firing paired homing shots while gravity orbs remain alive. Some shots resolve away from their original aim after gravity deflection; that alone does not prove an invalid collision.
+
+The non-sampled projectile callbacks incorrectly required the original NPC attack generation even after launch, and the cast's final callback could untrack a still-flying projectile. Released flights now require their retained projectile identity, live source, and current session instead; prelaunch callbacks still require the original cast. Cast completion leaves an active flight tracked for impact or its bounded expiry. This matches the ownership separation already used by sampled projectiles. Real-client validation is still needed for the reported visual mismatch.

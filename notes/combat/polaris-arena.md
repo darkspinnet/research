@@ -1,0 +1,7 @@
+# Polaris opening encounter
+
+Report `polaris-spawns-too-quickly-with-a-bunch-of-other-minions-tha-darkspin-bug-0.7.30-20260907T022349.428835200Z` confirms `zelems_4`, difficulty 8. At 22:22:57.771 local log time, proximity admission created Polaris object 515 plus VerdanthBasicMelee 516, Shooter 517, and ZelemBasicPackfly 518. The packfly acquired the hero immediately and pursued at 22:22:58.270; Polaris did not pursue until 22:23:10.930, matching its 13.16-second first-aggro delay.
+
+`PlanNamedEncounter` correctly classified Polaris as non-captain but still converted shared `HordeSpawner_Register` listeners into random opening adds. Standalone Destructor encounters now exclude those captain-wave anchors before allocating actors or requiring an agent pool. Captain encounters retain their wave, and boss-owned scripted summons are unaffected. This applies equally to named-event, post-horde, proximity, and developer callers of the planner.
+
+The report proves unwanted opening minions, not a skipped server intro delay. Proximity still admits at the existing 18-unit boss-anchor radius; the capture's hero was approximately 16.7 units from the anchor. Exact retail entrance-trigger timing and visible intro presentation remain unverified, so no arbitrary radius or delay change was made. Retest the opening without the unrelated minions; a video is needed if the intro still appears premature.

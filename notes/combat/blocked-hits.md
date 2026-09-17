@@ -1,0 +1,5 @@
+# Silent blocked enemy hits
+
+Report `enemies-do-no-damage-for-some-reason-darkspin-bug-0.7.31-20260907T023537.918564500Z` captures Zrin at full 498 HP in `cryos_4`, difficulty 9. The retained client trace contains 16 combat events, with healing instrumentation, but no incoming damage or avoidance feedback. Repeated enemy cast/turn publication is present. The archive does not include equipped defense attributes; this does not establish whether zero damage resulted from correct protection or excessive mitigation.
+
+The shared enemy melee hit callback discarded all returned packets whenever damage application returned false. The new avoidance and full-mitigation paths deliberately return false to suppress damage-dependent reactions, while returning valid Dodge/Resist/Immune feedback. Preserve those packets on the non-applied branch without enabling thorn reflection, status application, or hit reactions. This fixes silent feedback, not the unproven damage-balance issue. A real-client retest with the displayed defense statistics is needed; no resistance formula or minimum-damage floor was changed.

@@ -1,0 +1,12 @@
+# Campaign
+
+- 2026-09-04 implementation: [NPC facing](npc-facing.md) fixes spawn rotation, attack turns, pose-preserving arrival, authored facing policy, projectile tracking, idle turns, and restore/co-op publication; real-client visual acceptance remains pending.
+
+- 2026-08-28: Ordinary enemy orb budgets now use the native health-side resurrection override while a squad hero is dead, keep at most one resurrection capsule active, and restore every dead squad member through the packaged pickup presentation and checkpointed resource transaction.
+- 2026-08-30: A 0.7.7 crash capture ended immediately after a pickup only 0.29 units outside the server envelope entered native pursuit and never retried; pickup admission now retains the authored two-unit surface range while allowing one unit of replicated-pose drift, accepting that captured boundary instead of invoking the unstable pursuit path.
+- 2026-08-23: Authored security pads now begin with their orb inactive, continuously reject entry while a living eligible enemy remains within the recovered local threat radius, and power up the noun-owned blue ordinary or red boss orb as soon as that local group dies.
+- 2026-08-27: Security pads now power back down if a newly admitted encounter introduces a local threat, and later named bosses wait for the final authored horde completion instead of spawning from boss-anchor proximity.
+- 2026-08-27: The 2-1 client-only Overdrive boundary now resolves and admits its paired nearby server boss listener, projects the boss to the zone, schedules its first action, and completes the Overdrive presentation without restoring general later-level proximity admission.
+- Current: All 24 maps and 72 chain slots load through shared zone authority, with exact combat profiles for every director noun resolved from its basename or explicit captain-parent inheritance and mandatory named-boss identity admission before projection or spawn.
+- Remaining: Exact encounter parity, natural completion coverage, and human validation.
+- Evidence: The authoritative content catalog contains basename-keyed ClassAttributes rows for all 328 distinct director nouns. Of these, 260 contain complete combat profiles; all 68 zero-stat captain rows map to a complete same-family, difficulty-suffix-aligned parent while retaining their own challenge, rank, targetability, pet, and player-count metadata. Every cataloged named encounter must also resolve its display and affix identity during preparation, director validation, and immediately before its spawn plan is formed.
